@@ -1,0 +1,38 @@
+﻿@using Surfbreak.Models.Surfspot
+@using Surfbreak.Models
+@inject WeatherForecastService weatherForecastService
+
+<h1>Weather Forecast Service</h1>
+<div>
+    @if(forecasts == null)
+    {
+        <p><em>...Loading from Api with Blazor</em></p>
+    }
+    else
+    {
+    <div>
+        Data fra API:
+        <div>
+            @foreach (var item in forecasts)
+            {
+                <div>Tidsstempel: @item.TimeStamp</div>
+                <div>Bølgeperiode: @item.WavePeriod sekunder</div>
+                <div>Bølgehøjde: @item.WaveHeight meter</div>
+                <div>Vind hastighed: @item.WindSpeed meter pr. sekund</div>
+                <div>Hav temperatur: @item.SeaTemperature grader celcius</div>
+            }
+        </div>
+    </div>
+    }
+</div>
+
+@code {
+    [Parameter] public Surfspot Surfspot { get; set; }
+
+    private List<WeatherCondition> forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await weatherForecastService.GetWeatherConditionsAsListAsync(Surfspot);
+    }
+}

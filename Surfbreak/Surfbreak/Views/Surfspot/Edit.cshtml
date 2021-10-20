@@ -1,0 +1,18 @@
+﻿@model Surfbreak.Models.Surfspot.Surfspot
+
+<div class="modal-body">
+
+    <h1 >Rediger surfspot navn</h1>
+    <div class="col-sm-4">
+
+        <form asp-action="Edit" asp-controller="Surfspot" method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <input asp-for="Name" placeholder="Navn" />
+            <span asp-validation-for="Name" class="field-validation-error"></span>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="RowVersion" />
+
+            <input type="submit" value="rediger surfspot" />
+        </form>
+    </div>
+</div>

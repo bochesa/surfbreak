@@ -1,0 +1,46 @@
+﻿@model Surfbreak.Models.Surfspot.SurfspotViewModel
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>
+                    Surfspots!
+                </h1>
+                <div>
+                    <h2>
+                        @Model.Surfspot.Name
+                    </h2>
+                    <p>
+                        @Model.Surfspot.Location.Name
+                        ved
+                        @Model.Surfspot.Location.Longitude
+                        /
+                        @Model.Surfspot.Location.Latitude
+                    </p>
+                </div>
+
+                <div>
+                    Kommentar:
+                    <div>
+                        <form asp-action="Comments" asp-controller="Surfspot">
+                            <textarea asp-for="Comment.Text"></textarea>
+                            <input type="hidden" asp-for="Comment.SurfspotId" value="@Model.Surfspot.Id" /><br />
+                            <button type="submit" class="btn btn-primary">Tilføj Kommentar</button>
+                        </form>
+                    </div>
+                </div>
+                @foreach (var item in Model.Surfspot.Comments)
+                {
+                    <div>
+                        @item.Text
+                    </div>
+                }
+
+            </div>
+            <div class="col-sm-8">
+                @(await Html.RenderComponentAsync<WeatherForecast>(RenderMode.ServerPrerendered, new { Surfspot = Model.Surfspot }))
+                @*<WeatherForecast Surfspot="Model.Surfspot"  />*@ 
+            </div>
+        </div>
+    </div>
+</div>

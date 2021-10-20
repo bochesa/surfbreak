@@ -1,0 +1,12 @@
+﻿@model Surfbreak.Models.Surfspot.Surfspot
+
+
+    <h1>Opret nyt surfspot</h1>
+<div class="modal-body">
+
+    <form asp-action="Create" asp-controller="Surfspot" method="post">
+        <input asp-for="Name" placeholder="Name" />
+        
+        <input type="submit" value="Opret nyt surfspot" />
+    </form>
+</div>

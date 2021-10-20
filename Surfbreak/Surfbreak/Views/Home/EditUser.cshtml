@@ -1,0 +1,47 @@
+﻿@addTagHelper"*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model Surfbreak.Models.User
+@{
+    Layout = "_Layout";
+}
+
+<div class="modal-header">
+    <p>Rediger bruger</p>
+</div>
+
+<div class="container">
+    <fieldset>
+        <form asp-action="EditUser" asp-controller="Home" method="post">
+
+            <div asp-validation-summary="All" class="input-validation-error"></div>
+            @*<input type="hidden" asp-for="RowVersion" />*@
+            <p>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="User Name" />
+                <span asp-validation-for="Name"></span>
+            </p>
+            <p>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email"></span>
+            </p>
+            <p>
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" placeholder="Addresse" />
+                <span asp-validation-for="Address"></span>
+            </p>
+            <p>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password"></span>
+            </p>
+            <p>
+                <label asp-for="IsAdmin"></label>
+                <input asp-for="IsAdmin" />
+            </p>
+            <p>
+                <button type="submit">Gem Ændringer</button>
+            </p>
+        </form>
+
+    </fieldset>
+</div>

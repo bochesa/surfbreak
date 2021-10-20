@@ -1,0 +1,75 @@
+﻿@addTagHelper"*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model Surfbreak.Models.User
+@{
+    Layout = "_Layout";
+}
+
+<div class="modal-header">
+    <p>Opret ny bruger</p>
+</div>
+
+<div class="container">
+    <fieldset>
+
+        @*@using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <p>
+                @Html.LabelFor(x => x.UserName)
+                @Html.EditorFor(x => x.UserName)
+                @Html.ValidationMessageFor(x => x.UserName)
+            </p>
+            <p>
+                @Html.LabelFor(x => x.Email)
+                @Html.EditorFor(x => x.Email)
+                @Html.ValidationMessageFor(x => x.Email)
+            </p>
+            <p>
+                @Html.LabelFor(x => x.Address)
+                @Html.EditorFor(x => x.Address)
+                @Html.ValidationMessageFor(x => x.Address)
+            </p>
+            <p>
+                @Html.LabelFor(x => x.Password)
+                @Html.EditorFor(x => x.Password)
+                @Html.ValidationMessageFor(x => x.Password)
+            </p>
+            <p>
+                <button type="submit">Create User</button>
+            </p>
+        }*@
+        <form asp-action="create" asp-controller="Home">
+
+            <div asp-validation-summary="All" class="input-validation-error"></div>
+
+            <p>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="User Name" />
+                <span asp-validation-for="Name"></span>
+            </p>
+            <p>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email"></span>
+            </p>
+            <p>
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" placeholder="Addresse" />
+                <span asp-validation-for="Address"></span>
+            </p>
+            <p>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password"></span>
+            </p>
+            <p>
+                <label asp-for="IsAdmin"></label>
+                <input asp-for="IsAdmin" />
+            </p>
+            <p>
+                <button type="submit">Create User</button>
+            </p>
+        </form>
+
+    </fieldset>
+</div>

@@ -1,0 +1,32 @@
+﻿@addTagHelper"*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model IEnumerable<User>
+@{
+    Layout = "_Layout";
+}
+
+<div class="modal-header">
+    <p>Current Users</p>
+</div>
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <td>Brugernavn</td>
+            <td>Email</td>
+            <td>Adresse</td>
+            <td>Er admin</td>
+            <td></td>
+        </tr>
+        @foreach(User u in Model)
+        {
+        <tr>
+            <td>@u.Name</td>
+            <td>@u.Email</td>
+            <td>@u.Address</td>
+            <td>@u.IsAdmin</td>
+            <td><a asp-action="EditUser" asp-route-id="@u.Id">Rediger Bruger</a></td>
+        </tr>
+        }
+        
+    </table>
+</div>
